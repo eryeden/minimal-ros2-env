@@ -1,0 +1,14 @@
+{
+    "build": {
+        "merge-install": true,
+        "symlink-install": false,
+        "cmake-args": [
+            '-DCMAKE_BUILD_TYPE=RelWithDebInfo',
+            '--no-warn-unused-cli',
+            ]
+    },
+    "test": {
+        "merge-install": true,
+        "event-handlers": ["console_cohesion+"]
+    }
+}
