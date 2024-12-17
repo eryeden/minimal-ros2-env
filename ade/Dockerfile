@@ -1,5 +1,4 @@
-ARG ROS_DISTRO
-FROM ros2-ade-base:${ROS_DISTRO}
+FROM ros2-humble-cuda-opengl
 
 # Add colcon configurations
 COPY .colcon/ /usr/local/share/colcon/colcon-home/

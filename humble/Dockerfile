@@ -1,4 +1,4 @@
-FROM nvcr.io/nvidia/cuda:12.6.3-cudnn-devel-ubuntu22.04
+FROM nvcr.io/nvidia/cuda:12.4.1-cudnn-devel-ubuntu22.04
 
 LABEL maintainer="ery.eden@gmail.com"
 
@@ -7,10 +7,10 @@ RUN apt update
 # Install OpenGL related packages for cuda: https://qiita.com/ntrlmt/items/c0a807aeff83eea7be24
 RUN apt-get update && apt-get install -y --no-install-recommends \
         pkg-config \
-        libglvnd-dev libglvnd-dev:i386 \
-        libgl1-mesa-dev libgl1-mesa-dev:i386 \
-        libegl1-mesa-dev libegl1-mesa-dev:i386 \
-        libgles2-mesa-dev libgles2-mesa-dev:i386
+        libglvnd-dev \
+        libgl1-mesa-dev \
+        libegl1-mesa-dev \
+        libgles2-mesa-dev
 
 # Fix locale
 RUN apt-get update && \
@@ -86,6 +86,9 @@ RUN rosdep update && \
 RUN git clone https://github.com/ros-tooling/ros-github-scripts
 RUN pip3 install ./ros-github-scripts && \
     rm -rf /ros-github-scripts
+
+# Install ros2 humble desktop
+RUN apt-get install -y ros-humble-ros-base
 
 # Install CCACHE
 RUN apt install -y ccache && \
